@@ -1,7 +1,8 @@
 package repositories
 
 import (
-    "context"
+	"context"
+	"go.uber.org/zap"
 
 	"{{ .PackageName }}/internal/models"
 	"{{ .PackageName }}/pkg/database"
@@ -32,6 +33,7 @@ type {{ .Name.Singular.Title }}RepositoryInterface interface {
 
 // {{ .Name.Singular.Title }}Repository ...
 type {{ .Name.Singular.Title }}Repository struct {
+	logger   *zap.Logger
 	database *gorm.DB
 }
 
@@ -58,6 +60,7 @@ func (repository *{{ .Name.Singular.Title }}Repository) Count(ctx context.Contex
 	}
 
 	var count int64
+	model := models.{{ .Name.Singular.Title }}{}
 	if err := db.Scopes(scopes...).Count(&count).Error; err != nil {
 		return 0, err
 	}
@@ -72,7 +75,7 @@ func (repository *{{ .Name.Singular.Title }}Repository) First(ctx context.Contex
 		db = repository.database
 	}
 	var model models.{{ .Name.Singular.Title }}
-	if err := db.Scopes(scopes...).First(&model).Error; err != nil {
+	if err := db.WithContext(ctx).Table(model.TableName()).Scopes(scopes...).First(&model).Error; err != nil {
 		return nil, err
 	}
 	return &model, nil
@@ -138,6 +141,6 @@ func (repository *{{ .TableName.Singular.Title }}Repository) By{{ .ObjectName }}
 {{- end }}
 
 // New{{ .Name.Singular.Title }}Repository ... Create new repository
-func New{{ .Name.Singular.Title }}Repository(database *gorm.DB) {{ .Name.Singular.Title }}RepositoryInterface {
-	return &{{ .Name.Singular.Title }}Repository{database: database}
+func New{{ .Name.Singular.Title }}Repository(logger *zap.Logger, database *gorm.DB) {{ .Name.Singular.Title }}RepositoryInterface {
+	return &{{ .Name.Singular.Title }}Repository{logger: logger, database: database}
 }
