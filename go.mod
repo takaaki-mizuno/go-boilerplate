@@ -1,4 +1,4 @@
-module github.com/opn-ooo/go-boilerplate
+module github.com/takaaki-mizuno/go-boilerplate
 
 go 1.18
 

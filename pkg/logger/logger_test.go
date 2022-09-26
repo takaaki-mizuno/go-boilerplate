@@ -3,8 +3,8 @@ package logger
 import (
 	"testing"
 
-	"github.com/opn-ooo/go-boilerplate/config"
 	"github.com/stretchr/testify/assert"
+	"github.com/takaaki-mizuno/go-boilerplate/config"
 )
 
 func TestNewLogger(t *testing.T) {

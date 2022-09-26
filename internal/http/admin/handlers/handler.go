@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/opn-ooo/go-boilerplate/config"
+	"github.com/takaaki-mizuno/go-boilerplate/config"
 	"gorm.io/gorm"
 )
 
@@ -21,8 +21,8 @@ type Handler struct {
 func NewHandler(
 	db *gorm.DB,
 	config *config.Config,
-	// {{ START HANDLER ARGUMENTS }}
-	// {{ END HANDLER ARGUMENTS }}
+// {{ START HANDLER ARGUMENTS }}
+// {{ END HANDLER ARGUMENTS }}
 ) HandlerInterface {
 	return &Handler{
 		db:     db,

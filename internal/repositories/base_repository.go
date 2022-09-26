@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/opn-ooo/go-boilerplate/internal/models"
+	"github.com/takaaki-mizuno/go-boilerplate/internal/models"
 	"gorm.io/gorm"
 )
 

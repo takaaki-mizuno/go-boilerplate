@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"github.com/opn-ooo/go-boilerplate/config"
-	"github.com/opn-ooo/go-boilerplate/pkg/database"
-	"github.com/opn-ooo/go-boilerplate/pkg/logger"
+	"github.com/takaaki-mizuno/go-boilerplate/config"
+	"github.com/takaaki-mizuno/go-boilerplate/pkg/database"
+	"github.com/takaaki-mizuno/go-boilerplate/pkg/logger"
 )
 
 func createHandler() HandlerInterface {

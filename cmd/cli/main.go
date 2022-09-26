@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/opn-ooo/go-boilerplate/cmd"
-	"github.com/opn-ooo/go-boilerplate/cmd/cli/database"
+	"github.com/takaaki-mizuno/go-boilerplate/cmd"
+	"github.com/takaaki-mizuno/go-boilerplate/cmd/cli/database"
 	"os"
 
 	"github.com/spf13/cobra"

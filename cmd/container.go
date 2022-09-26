@@ -1,15 +1,15 @@
 package cmd
 
 import (
-	"github.com/opn-ooo/go-boilerplate/config"
-	adminHandler "github.com/opn-ooo/go-boilerplate/internal/http/admin/handlers"
-	appHandler "github.com/opn-ooo/go-boilerplate/internal/http/app/handlers"
-	appMiddlewares "github.com/opn-ooo/go-boilerplate/internal/http/app/middlewares"
+	"github.com/takaaki-mizuno/go-boilerplate/config"
+	adminHandler "github.com/takaaki-mizuno/go-boilerplate/internal/http/admin/handlers"
+	appHandler "github.com/takaaki-mizuno/go-boilerplate/internal/http/app/handlers"
+	appMiddlewares "github.com/takaaki-mizuno/go-boilerplate/internal/http/app/middlewares"
 	// {{ REPLACE repository_import }}
 	// {{ REPLACE END repository_import }}
-	"github.com/opn-ooo/go-boilerplate/pkg/database"
-	"github.com/opn-ooo/go-boilerplate/pkg/logger"
-	commonMiddlewares "github.com/opn-ooo/go-boilerplate/pkg/middlewares"
+	"github.com/takaaki-mizuno/go-boilerplate/pkg/database"
+	"github.com/takaaki-mizuno/go-boilerplate/pkg/logger"
+	commonMiddlewares "github.com/takaaki-mizuno/go-boilerplate/pkg/middlewares"
 	"go.uber.org/dig"
 )
 

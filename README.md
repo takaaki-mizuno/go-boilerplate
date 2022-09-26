@@ -3,10 +3,10 @@
 <p align="center">
   <h3 align="center">GO Boilerplate</h3>
   <p align="center">
-    GO boilerplate is an application that is developed to generate application by API specification and Database schema with the collaboration with opn-generator.  
+    GO boilerplate is an application that is developed to generate application by API specification and Database schema with the collaboration with webapp-generator.
     <br />
     <br />
-    <a href="https://github.com/opn-ooo/opn-generator/issues/new">Report Bug</a>
+    <a href="https://github.com/takaaki-mizuno/webapp-generator/issues/new">Report Bug</a>
   </p>
 </p>
 
@@ -115,7 +115,7 @@ This project is using Uber’s [dig](https://github.com/uber-go/dig) as dependen
 
 ## Usage
 
-Please check [OPN generator](https://github.com/opn-ooo/opn-generator) readme section check the usage process of go boilerplate.
+Please check [WebApp Generator](https://github.com/takaaki-mizuno/webapp-generator) readme section check the usage process of go boilerplate.
 
 <!-- ROADMAP -->
 
@@ -123,13 +123,13 @@ Please check [OPN generator](https://github.com/opn-ooo/opn-generator) readme se
 
 The roadmap is useful for planning large pieces of work several months in advance at the Epic level within a single project. Simple planning and dependency management features help teams visualize and manage work better together.
 
-See the [open issues](https://github.com/opn-ooo/go-boilerplate/issues?q=is%3Aopen+is%3Aissue) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/takaaki-mizuno/go-boilerplate/issues?q=is%3Aopen+is%3Aissue) for a list of proposed features (and known issues).
 
 <!-- REQUIREMENTS -->
 
 ## Requirements
 
--   Go^1.16
+-   Go^1.18
 
 <!-- ACKNOWLEDGEMENTS -->
 

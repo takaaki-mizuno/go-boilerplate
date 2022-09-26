@@ -6,7 +6,7 @@ import (
 	"log"
 
 	"github.com/DATA-DOG/go-sqlmock"
-	"github.com/opn-ooo/go-boilerplate/config"
+	"github.com/takaaki-mizuno/go-boilerplate/config"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	// Postgres driver for GORM

@@ -5,11 +5,11 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/opn-ooo/go-boilerplate/cmd"
-	"github.com/opn-ooo/go-boilerplate/config"
-	"github.com/opn-ooo/go-boilerplate/internal/http/admin/handlers"
-	adminMiddlewares "github.com/opn-ooo/go-boilerplate/internal/http/admin/middlewares"
-	commonMiddlewares "github.com/opn-ooo/go-boilerplate/pkg/middlewares"
+	"github.com/takaaki-mizuno/go-boilerplate/cmd"
+	"github.com/takaaki-mizuno/go-boilerplate/config"
+	"github.com/takaaki-mizuno/go-boilerplate/internal/http/admin/handlers"
+	adminMiddlewares "github.com/takaaki-mizuno/go-boilerplate/internal/http/admin/middlewares"
+	commonMiddlewares "github.com/takaaki-mizuno/go-boilerplate/pkg/middlewares"
 	"go.uber.org/dig"
 	"go.uber.org/zap"
 )
