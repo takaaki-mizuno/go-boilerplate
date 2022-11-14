@@ -50,7 +50,7 @@ func (repository *Mock{{ .Name.Singular.Title }}Repository) Delete(ctx context.C
 }
 
 {{- range .Columns}}
-{{- if .IsCommonColumn }}
+{{- if or .IsCommonColumn .IsSystemUseColumn }}
 {{- else }}
 
 // By{{ .ObjectName }} ...
