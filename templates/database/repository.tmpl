@@ -48,7 +48,7 @@ func (repository *{{ .Name.Singular.Title }}Repository) Get(ctx context.Context,
 		db = repository.database
 	}
 
-{{- if or .IsCommonColumn .IsSystemUseColumn }}
+{{- if .UseSoftDelete }}
     scopes = append(scopes, NotSoftDeleted())
 
 {{- end }}
@@ -66,7 +66,7 @@ func (repository *{{ .Name.Singular.Title }}Repository) Count(ctx context.Contex
 		db = repository.database
 	}
 
-{{- if or .IsCommonColumn .IsSystemUseColumn }}
+{{- if .UseSoftDelete }}
     scopes = append(scopes, NotSoftDeleted())
 
 {{- end }}
@@ -86,7 +86,7 @@ func (repository *{{ .Name.Singular.Title }}Repository) First(ctx context.Contex
 		db = repository.database
 	}
 
-{{- if or .IsCommonColumn .IsSystemUseColumn }}
+{{- if .UseSoftDelete }}
     scopes = append(scopes, NotSoftDeleted())
 
 {{- end }}
