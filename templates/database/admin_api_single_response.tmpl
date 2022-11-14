@@ -15,6 +15,7 @@ type {{ .Name.Singular.Title }} struct {
 func New{{ .Name.Singular.Title }}(model models.{{ .Name.Singular.Title }}) *{{ .Name.Singular.Title }} {
 	response := &{{ .Name.Singular.Title }}{
 {{- range .Columns }}
+{{- if not .IsSystemUseColumn }}
 {{- if eq .ObjectType "decimal.Decimal" }}
 {{ if .APIReturnable }}		{{.ObjectName}}: model.{{.ObjectName}}.String(),{{ end -}}
 {{- else if eq .ObjectType "datatypes.JSON"}}
@@ -22,6 +23,7 @@ func New{{ .Name.Singular.Title }}(model models.{{ .Name.Singular.Title }}) *{{ 
 {{ else }}
 {{ if .APIReturnable }}		{{.ObjectName}}: model.{{.ObjectName}},{{ end -}}
 {{ end -}}
+{{- end -}}
 {{ end }}
 		CreatedAt: model.CreatedAt.Unix(),
         UpdatedAt: model.UpdatedAt.Unix(),

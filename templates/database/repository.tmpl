@@ -13,6 +13,9 @@ import (
 {{- if .HasDecimal }}
     "github.com/shopspring/decimal"
 {{ end }}
+{{- if .UseSoftDelete }}
+    "time"
+{{ end }}
 )
 
 // {{ .Name.Singular.Title }}RepositoryInterface ...
@@ -24,7 +27,7 @@ type {{ .Name.Singular.Title }}RepositoryInterface interface {
 	Save(ctx context.Context, model *models.{{ .Name.Singular.Title }}) (*models.{{ .Name.Singular.Title }}, error)
     Delete(ctx context.Context, model *models.{{ .Name.Singular.Title }}) error
 {{- range .Columns}}
-{{- if .IsCommonColumn }}
+{{- if or .IsCommonColumn .IsSystemUseColumn }}
 {{- else }}
     By{{ .ObjectName }}(param {{ .ObjectType }}) func(*gorm.DB) *gorm.DB
 {{- end -}}
@@ -45,6 +48,10 @@ func (repository *{{ .Name.Singular.Title }}Repository) Get(ctx context.Context,
 		db = repository.database
 	}
 
+{{- if or .IsCommonColumn .IsSystemUseColumn }}
+    scopes = append(scopes, NotSoftDeleted())
+
+{{- end }}
 	if err := db.Scopes(scopes...).Find(&data).Error; err != nil {
 		return nil, err
 	}
@@ -59,9 +66,13 @@ func (repository *{{ .Name.Singular.Title }}Repository) Count(ctx context.Contex
 		db = repository.database
 	}
 
+{{- if or .IsCommonColumn .IsSystemUseColumn }}
+    scopes = append(scopes, NotSoftDeleted())
+
+{{- end }}
 	var count int64
 	model := models.{{ .Name.Singular.Title }}{}
-	if err := db.Scopes(scopes...).Count(&count).Error; err != nil {
+	if err := db.Table(model.TableName()).Scopes(scopes...).Count(&count).Error; err != nil {
 		return 0, err
 	}
 
@@ -74,6 +85,11 @@ func (repository *{{ .Name.Singular.Title }}Repository) First(ctx context.Contex
 	if !ok {
 		db = repository.database
 	}
+
+{{- if or .IsCommonColumn .IsSystemUseColumn }}
+    scopes = append(scopes, NotSoftDeleted())
+
+{{- end }}
 	var model models.{{ .Name.Singular.Title }}
 	if err := db.WithContext(ctx).Table(model.TableName()).Scopes(scopes...).First(&model).Error; err != nil {
 		return nil, err
@@ -120,15 +136,21 @@ func (repository *{{ .Name.Singular.Title }}Repository) Delete(ctx context.Conte
     if err := db.Scopes(ByID(model.ID)).First(&checkModel).Error; err != nil {
         return err
     }
+{{- if .UseSoftDelete }}
+    checkModel.DeletedAt = time.Now()
+    _, err := repository.Save(ctx, &checkModel)
+{{- else }}
     err := db.Delete(&models.{{ .Name.Singular.Title }}{ID: model.ID,}).Error
     if err != nil {
         return err
     }
+{{- end }}
+
     return nil
 }
 
 {{- range .Columns}}
-{{- if .IsCommonColumn }}
+{{- if or .IsCommonColumn .IsSystemColumn }}
 {{- else }}
 
 // By{{ .ObjectName }} ...

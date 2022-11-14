@@ -21,8 +21,8 @@ type Handler struct {
 func NewHandler(
 	db *gorm.DB,
 	config *config.Config,
-// {{ START HANDLER ARGUMENTS }}
-// {{ END HANDLER ARGUMENTS }}
+	// {{ START HANDLER ARGUMENTS }}
+	// {{ END HANDLER ARGUMENTS }}
 ) HandlerInterface {
 	return &Handler{
 		db:     db,
