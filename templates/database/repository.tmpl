@@ -141,10 +141,10 @@ func (repository *{{ .Name.Singular.Title }}Repository) Delete(ctx context.Conte
     _, err := repository.Save(ctx, &checkModel)
 {{- else }}
     err := db.Delete(&models.{{ .Name.Singular.Title }}{ID: model.ID,}).Error
-    if err != nil {
-        return err
-    }
 {{- end }}
+	if err != nil {
+		return err
+	}
 
     return nil
 }
