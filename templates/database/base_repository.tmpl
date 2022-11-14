@@ -79,6 +79,13 @@ func AfterUpdatedAt(seconds int) func(*gorm.DB) *gorm.DB {
 	}
 }
 
+// NotSoftDeleted ...
+func NotSoftDeleted() func(*gorm.DB) *gorm.DB {
+	return func(db *gorm.DB) *gorm.DB {
+		return db.Where("deleted_at is null")
+	}
+}
+
 // Preload ... preload related models
 func Preload(relationName string) func(*gorm.DB) *gorm.DB {
 	return func(db *gorm.DB) *gorm.DB {
