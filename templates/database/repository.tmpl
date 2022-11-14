@@ -150,7 +150,7 @@ func (repository *{{ .Name.Singular.Title }}Repository) Delete(ctx context.Conte
 }
 
 {{- range .Columns}}
-{{- if or .IsCommonColumn .IsSystemColumn }}
+{{- if or .IsCommonColumn .IsSystemUseColumn }}
 {{- else }}
 
 // By{{ .ObjectName }} ...
